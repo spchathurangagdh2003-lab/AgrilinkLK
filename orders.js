@@ -1,8 +1,6 @@
 const API_BASE = "http://localhost:5000/api/orders";
 
-/**
- * PLACE ORDER (Called from products.js)
- */
+
 async function placeOrder(productId) {
     const qtyInput = document.getElementById(`qty-${productId}`);
     const quantity = parseInt(qtyInput.value);
@@ -37,10 +35,7 @@ async function placeOrder(productId) {
     }
 }
 
-/**
- * LOAD BUYER ORDERS
- * Used in order-history.html
- */
+
 async function loadMyOrders() {
     try {
         const res = await fetch(`${API_BASE}/my`, {
@@ -58,9 +53,6 @@ async function loadMyOrders() {
     }
 }
 
-/**
- * DISPLAY ORDERS
- */
 function displayOrders(orders) {
     const ordersDiv = document.getElementById("orders");
 
@@ -85,9 +77,7 @@ function displayOrders(orders) {
     `).join("");
 }
 
-/**
- * CANCEL ORDER (Buyer only)
- */
+
 async function cancelOrder(orderId) {
     if (!confirm("Are you sure you want to cancel this order?")) return;
 
@@ -113,3 +103,4 @@ async function cancelOrder(orderId) {
         alert("Server error while cancelling order");
     }
 }
+
