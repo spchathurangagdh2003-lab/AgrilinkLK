@@ -1,14 +1,10 @@
-// frontend/js/auth.js
-
 const apiUrl = 'http://localhost:5000/api/auth';
 
-// Register
 const registerForm = document.getElementById('registerForm');
 if (registerForm) {
     registerForm.addEventListener('submit', async (e) => {
         e.preventDefault();
 
-        // Collect values
         const FullName = document.getElementById('fullname').value.trim();
         const Email = document.getElementById('email').value.trim();
         const Password = document.getElementById('password').value.trim();
@@ -16,7 +12,6 @@ if (registerForm) {
         const Phone = document.getElementById('phone').value.trim();
         const District = document.getElementById('district').value.trim();
 
-        // Frontend validation
         if (!FullName || !Email || !Password || !Role || !Phone || !District) {
             alert("Please fill all required fields!");
             return;
@@ -24,7 +19,7 @@ if (registerForm) {
 
         const data = { FullName, Email, Password, Role, Phone, District };
 
-        console.log("Register Data:", data); // Debugging
+        console.log("Register Data:", data); 
 
         try {
             const res = await fetch(`${apiUrl}/register`, {
@@ -86,3 +81,4 @@ if (loginForm) {
         }
     });
 }
+
