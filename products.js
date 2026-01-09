@@ -5,7 +5,6 @@ const filterBtn = document.getElementById("filterBtn");
 
 const token = localStorage.getItem("token");
 
-// Fetch products from backend (Buyer route)
 async function fetchProducts() {
     let url = "http://localhost:5000/api/buyer/products";
 
@@ -29,7 +28,6 @@ async function fetchProducts() {
     }
 }
 
-// Display products with full details & order option
 function displayProducts(products) {
     if (!products || products.length === 0) {
         productsDiv.innerHTML = "<p>No products found</p>";
@@ -63,7 +61,6 @@ function displayProducts(products) {
     `).join("");
 }
 
-// Place order (called from Order button)
 async function placeOrder(productId) {
     const qtyInput = document.getElementById(`qty-${productId}`);
     const quantity = Number(qtyInput.value);
@@ -92,7 +89,6 @@ async function placeOrder(productId) {
 
         alert("Order placed successfully");
 
-        // Reload products & orders after successful order
         fetchProducts();
         if (typeof fetchOrders === "function") {
             fetchOrders();
@@ -103,8 +99,8 @@ async function placeOrder(productId) {
     }
 }
 
-// Filter button click
+
 filterBtn.addEventListener("click", fetchProducts);
 
-// Load products on page load
 fetchProducts();
+
