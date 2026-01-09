@@ -7,9 +7,7 @@ const Order = require("../models/Order");
 const Review = require("../models/Review");
 const User = require("../models/User");
 
-/**
- * FARMER DASHBOARD
- */
+
 router.get("/dashboard", protect(["farmer"]), async (req, res) => {
   try {
     const farmer = await User.findById(req.user._id).select("-password");
@@ -34,9 +32,7 @@ router.get("/dashboard", protect(["farmer"]), async (req, res) => {
   }
 });
 
-/**
- * GET farmer products
- */
+
 router.get("/products", async (req, res) => {
   try {
     const products = await Product.find({ FarmerID: 1 }); // temporary farmerId for testing
@@ -56,9 +52,7 @@ router.get("/products", async (req, res) => {
 });
 
 
-/**
- * ADD product
- */
+
 router.post("/products", protect(["farmer"]), async (req, res) => {
   try {
     const product = await Product.create({
@@ -76,9 +70,7 @@ router.post("/products", protect(["farmer"]), async (req, res) => {
   }
 });
 
-/**
- * UPDATE product
- */
+
 router.put("/products/:id", protect(["farmer"]), async (req, res) => {
   try {
     const product = await Product.findOneAndUpdate(
@@ -96,9 +88,7 @@ router.put("/products/:id", protect(["farmer"]), async (req, res) => {
   }
 });
 
-/**
- * DELETE product
- */
+
 router.delete("/products/:id", protect(["farmer"]), async (req, res) => {
   try {
     const deleted = await Product.findOneAndDelete({
@@ -115,9 +105,6 @@ router.delete("/products/:id", protect(["farmer"]), async (req, res) => {
   }
 });
 
-/**
- * GET farmer orders
- */
 router.get("/orders", protect(["farmer"]), async (req, res) => {
   try {
     const orders = await Order.find({ farmer: req.user._id })
@@ -130,9 +117,7 @@ router.get("/orders", protect(["farmer"]), async (req, res) => {
   }
 });
 
-/**
- * UPDATE order status
- */
+
 router.put("/orders/:id/status", protect(["farmer"]), async (req, res) => {
   try {
     const order = await Order.findOneAndUpdate(
@@ -150,9 +135,7 @@ router.put("/orders/:id/status", protect(["farmer"]), async (req, res) => {
   }
 });
 
-/**
- * GET reviews
- */
+
 router.get("/reviews", protect(["farmer"]), async (req, res) => {
   try {
     const reviews = await Review.find({ farmer: req.user._id })
@@ -165,3 +148,4 @@ router.get("/reviews", protect(["farmer"]), async (req, res) => {
 });
 
 module.exports = router;
+
