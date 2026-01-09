@@ -4,9 +4,6 @@ const Order = require("../models/Order");
 const Product = require("../models/Product");
 const { protect } = require("../middleware/authMiddleware");
 
-/**
- * GET ALL BUYERS
- */
 router.get("/buyers", protect(["admin"]), async (req, res) => {
   try {
     const buyers = await User.find({ role: "buyer" }).select("-password");
@@ -16,9 +13,7 @@ router.get("/buyers", protect(["admin"]), async (req, res) => {
   }
 });
 
-/**
- * GET ALL FARMERS
- */
+
 router.get("/farmers", protect(["admin"]), async (req, res) => {
   try {
     const farmers = await User.find({ role: "farmer" }).select("-password");
@@ -28,9 +23,7 @@ router.get("/farmers", protect(["admin"]), async (req, res) => {
   }
 });
 
-/**
- * GET ALL ORDERS (with buyer, farmer, product info)
- */
+
 router.get("/orders", protect(["admin"]), async (req, res) => {
   try {
     const orders = await Order.find()
@@ -48,9 +41,6 @@ router.get("/orders", protect(["admin"]), async (req, res) => {
   }
 });
 
-/**
- * VERIFY USER
- */
 router.put("/verify/:id", protect(["admin"]), async (req, res) => {
   try {
     await User.findByIdAndUpdate(req.params.id, { verified: true });
@@ -61,3 +51,4 @@ router.put("/verify/:id", protect(["admin"]), async (req, res) => {
 });
 
 module.exports = router;
+
