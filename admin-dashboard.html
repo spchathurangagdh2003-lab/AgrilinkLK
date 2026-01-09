@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Dashboard - AgriLink LK</title>
+    <link rel="stylesheet" href="css/dashboard.css">
+</head>
+<body>
+
+<header>
+    <h1>AgriLink LK</h1>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="login.html">Login</a>
+        <a href="register.html">Register</a>
+        <a href="#" id="logoutBtn">Logout</a>
+    </nav>
+</header>
+
+<h2>Admin Dashboard</h2>
+
+<!-- Action Buttons -->
+<section class="admin-actions">
+    <button id="btnFarmers" class="button1">View Registered Farmers</button>
+    <button id="btnBuyers" class="button1">View Registered Buyers</button>
+    <button id="btnOrders">View Orders</button>
+</section>
+
+<!-- Registered Farmers -->
+<section>
+    <h3>Registered Farmers</h3>
+    <div id="farmers" class="user-grid"></div>
+</section>
+
+<!-- Registered Buyers -->
+<section>
+    <h3>Registered Buyers</h3>
+    <div id="buyers" class="user-grid"></div>
+</section>
+
+<!-- Orders -->
+<section>
+    <h3>Orders</h3>
+    <div id="orders" class="orders-grid"></div>
+</section>
+
+<script src="js/admin.js"></script>
+</body>
+</html>

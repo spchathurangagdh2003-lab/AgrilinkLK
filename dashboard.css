@@ -1,0 +1,118 @@
+body {
+    font-family: Arial;
+    background-color: rgb(223, 239, 218);
+    padding: 0;
+    margin: 0;
+}
+
+header {
+    background-color: #2e7d32;
+    color: white;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 60px;
+}
+
+header h1 {
+    font-size: 30px;
+    margin:10px;
+    color:whitesmoke;
+    text-shadow:
+    -1px -1px 0 #000000,
+     1px -1px 0 #000000,
+    -1px  1px 0 #000000,
+     1px  1px 0 #000000;
+}
+
+header nav a {
+    color: white;
+    margin-left: 25px;
+    text-decoration: none;
+}
+
+header nav a:hover {
+    text-decoration: underline;
+}
+
+h2 {
+    color: #006522;
+    text-align: center;
+    font-size: 30px;
+}
+
+section {
+    background: rgb(205, 211, 255);
+    padding: 25px;
+    margin: 10px 100px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+}
+h3{
+    font-size: 20px;
+}
+
+input, textarea {
+    display: block;
+    width: 90%;
+    padding: 10px;
+    margin: 7px 50px;
+}
+
+button {
+    background: #2e7d32;
+    color: white;
+    border: none;
+    padding: 12px;
+    margin: 10px;
+    cursor: pointer;
+}
+
+.filter-section{
+    background-color: rgb(223, 129, 78);
+
+}
+
+.filter-section input{
+    margin-left: 100px;
+    width: 80%;
+    border-radius: 5px;
+}
+
+.filter-section select{
+    width: 70%;
+    height:40px ;
+    margin: 10px;
+    margin-left: 100px;
+    border-radius: 5px;
+}
+
+.filter-section button{
+    padding: 12px 35px;
+    margin: 10px 30px;
+    border-radius: 5px;
+
+}
+
+.buyer_section{
+    background: rgb(223, 129, 78);
+    padding: 25px;
+    margin: 10px 100px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+}
+
+h3{
+    font-size: 25px;
+}
+
+
+.admin-actions button{
+    width: 200px;
+    margin-left: 50px;
+}
+
+.admin-actions .button1{
+    margin-right: 230px;
+}

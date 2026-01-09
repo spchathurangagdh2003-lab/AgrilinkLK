@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Farmer Dashboard - AgriLink LK</title>
+    <link rel="stylesheet" href="css/dashboard.css">
+</head>
+<body>
+    <header>
+        <h1>AgriLink LK</h1>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="login.html">Login</a>
+            <a href="register.html">Register</a>
+            <a href="login.html">Logout</a>
+        </nav>
+    </header>
+<div class="dashboard_1">
+    <h2>Farmer Dashboard</h2>
+
+    <section>
+        <h3>Add Product</h3>
+        <input id="pname" placeholder="Product Name">
+        <input id="category" placeholder="Category">
+        <input id="price" type="number" placeholder="Price">
+        <input id="qty" type="number" placeholder="Quantity">
+        <input id="unit" placeholder="Unit">
+        <textarea id="desc" placeholder="Description"></textarea>
+        <button onclick="addProduct()">Add Product</button>
+    </section>
+</div>
+
+    <section>
+        <h3>My Products</h3>
+        <div id="productList"></div>
+    </section>
+
+    <script src="js/farmer.js"></script>
+</body>
+</html>

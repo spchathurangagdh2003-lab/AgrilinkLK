@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Buyer Dashboard - AgriLink LK</title>
+    <link rel="stylesheet" href="css/dashboard.css">
+</head>
+<body>
+
+<header>
+    <h1>AgriLink LK</h1>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="login.html">Login</a>
+        <a href="register.html">Register</a>
+        <a href="login.html">Logout</a>
+    </nav>
+</header>
+
+<h2>Buyer Dashboard</h2>
+
+<!-- 🔍 SEARCH & FILTER -->
+<section class="filter-section">
+    <input 
+        type="text" 
+        id="searchName" 
+        placeholder="Search by product name"
+    >
+
+    <select id="categoryFilter">
+        <option value="">All Categories</option>
+        <option value="Vegetable">Vegetable</option>
+        <option value="Fruit">Fruit</option>
+        <option value="Grain">Grain</option>
+    </select>
+
+    <button id="filterBtn">Search</button>
+</section>
+
+<!-- 📦 PRODUCTS -->
+<section>
+    <h3>Available Products</h3>
+    <div id="products" class="product-grid">
+        <!-- Products will load here -->
+    </div>
+</section>
+
+<hr>
+
+<!-- 🧾 ORDER HISTORY -->
+<section>
+    <h3>My Orders</h3>
+    <div id="orders" class="order-list">
+        <!-- Orders will load here -->
+    </div>
+</section>
+
+<!-- JS FILES (NO CHANGE TO ORDER) -->
+<script src="js/products.js"></script>
+<script src="js/orders.js"></script>
+<script src="js/buyer.js"></script>
+
+</body>
+</html>

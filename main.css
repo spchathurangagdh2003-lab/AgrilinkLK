@@ -1,0 +1,159 @@
+/* frontend/css/main.css */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #2e7d32;
+    color: white;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 60px;
+}
+
+header h1 {
+    font-size: 30px;
+    margin:10px;
+    color:whitesmoke;
+    text-shadow:
+    -1px -1px 0 #000000,
+     1px -1px 0 #000000,
+    -1px  1px 0 #000000,
+     1px  1px 0 #000000;
+}
+
+header nav a {
+    color: white;
+    margin-left: 25px;
+    text-decoration: none;
+}
+
+header nav a:hover {
+    text-decoration: underline;
+}
+
+main {
+    padding: 20px;
+    background-image:url("home.png");
+    background-repeat: no-repeat;
+    background-size:cover ;
+}
+
+.hero {
+    background:linear-gradient(90deg,#00000033,#00000022);
+    border-radius: 10px;
+    text-align: center;
+    padding: 80px 40px;
+    margin: 50px 30px;
+}
+
+.hero h2 {
+    margin-bottom: 10px;
+    font-size: 45px;
+    font-weight: bold;
+    text-shadow:
+    -1px -1px 0 #fff,
+     1px -1px 0 #fff,
+    -1px  1px 0 #fff,
+     1px  1px 0 #fff;
+}
+
+.hero p{
+    color: rgb(207, 207, 207);
+    font-size: 20px;
+    font-weight: bold;
+    text-shadow:
+    -1px -1px 0 #000000,
+     1px -1px 0 #000000,
+    -1px  1px 0 #000000,
+     1px  1px 0 #000000;
+}
+
+.hero .btn {
+    display: inline-block;
+    background-color: #2e7d32;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.hero .btn:hover {
+    background-color: #1b5e20;
+}
+
+.features {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 80px;
+    background:linear-gradient(90deg,#00000033,#00000022);
+    margin: 50px 30px;
+    border-radius: 10px;
+    padding: 70px;
+}
+
+.feature {
+    border-color: black;
+    border-radius: 5px;
+    max-width: 300px;
+    padding-top: 10px;
+    padding-right: 10px;
+    background-color: rgba(255, 255, 255, 0.6);
+    border: 1px solid black;
+}
+
+.feature h3{
+    text-align: center;
+    font-size: 20px;
+}
+
+.feature ul{
+    margin-bottom: 30px;
+}
+
+.feature ul li{
+    margin-bottom: 10px;
+
+}
+
+.about{
+    margin: 50px 30px;
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.6);
+    padding: 30px;
+}
+
+.about ul li {
+  margin-bottom: 10px;
+  line-height: 2;
+}
+
+footer {
+    background-color: #004701;
+    color: rgb(199, 198, 198);
+    padding: 10px 100px;
+}
+
+.mid{
+    display: flex;
+    gap: 200px;
+}
+
+.footer-section{
+    display: flex;
+}
+
+.footer-section ul li a{
+    color: rgb(182, 182, 182)
+}
+
+.footer-section ul li a:hover{
+    color: blue;
+}
+.footer-bottom{
+    text-align: center;
+}

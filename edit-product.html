@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Product - AgriLink LK</title>
+    <link rel="stylesheet" href="css/dashboard.css">
+</head>
+<body>
+    <header>
+        <h1>AgriLink LK</h1>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="login.html">Login</a>
+            <a href="register.html">Register</a>
+            <a href="login.html">Logout</a>
+        </nav>
+    </header>
+
+    <h2>Edit Product</h2>
+
+    <section>
+        <label>Product Name:</label>
+        <input id="pname" placeholder="Product Name"><br>
+
+        <label>Category:</label>
+        <input id="category" placeholder="Category"><br>
+
+        <label>Price:</label>
+        <input id="price" type="number" placeholder="Price"><br>
+
+        <label>Quantity:</label>
+        <input id="qty" type="number" placeholder="Quantity"><br>
+
+        <label>Unit:</label>
+        <input id="unit" placeholder="Unit"><br>
+
+        <label>Description:</label>
+        <textarea id="desc" placeholder="Description"></textarea><br>
+
+        <button id="updateBtn">Update Product</button>
+    </section>
+
+    <script>
+        const api = "http://localhost:5000/api/products";
+        const urlParams = new URLSearchParams(window.location.search);
+        const productId = urlParams.get('id'); // get product id from URL
+
+        // Load product data
+        async function loadProduct() {
+            if (!productId) {
+                alert("No product ID provided");
+                window.location.href = "farmer-dashboard.html";
+                return;
+            }
+
+            try {
+                const res = await fetch(`${api}`);
+                const products = await res.json();
+                const product = products.find(p => p._id === productId);
+
+                if (!product) {
+                    alert("Product not found");
+                    window.location.href = "farmer-dashboard.html";
+                    return;
+                }
+
+                document.getElementById("pname").value = product.name;
+                document.getElementById("category").value = product.category;
+                document.getElementById("price").value = product.price;
+                document.getElementById("qty").value = product.quantity;
+                document.getElementById("unit").value = product.unit;
+                document.getElementById("desc").value = product.description;
+
+            } catch (error) {
+                console.error(error);
+                alert("Failed to load product");
+                window.location.href = "farmer-dashboard.html";
+            }
+        }
+
+        loadProduct();
+
+        // Update product
+        document.getElementById("updateBtn").addEventListener("click", async () => {
+            const updatedData = {
+                ProductName: document.getElementById("pname").value,
+                Category: document.getElementById("category").value,
+                Price: document.getElementById("price").value,
+                Quantity: document.getElementById("qty").value,
+                Unit: document.getElementById("unit").value,
+                Description: document.getElementById("desc").value
+            };
+
+            try {
+                const res = await fetch(`${api}/${productId}`, {
+                    method: "PUT",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(updatedData)
+                });
+
+                if (!res.ok) throw new Error("Failed to update product");
+
+                alert("Product updated successfully");
+                window.location.href = "farmer-dashboard.html";
+            } catch (err) {
+                console.error(err);
+                alert(err.message);
+            }
+        });
+    </script>
+</body>
+</html>
