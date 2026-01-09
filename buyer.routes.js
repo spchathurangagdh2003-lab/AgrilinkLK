@@ -5,9 +5,7 @@ const Product = require("../models/Product");
 const Order = require("../models/Order");
 const { protect } = require("../middleware/authMiddleware");
 
-/**
- * GET all products (for buyer dashboard)
- */
+
 router.get("/products", async (req, res) => {
   try {
     const products = await Product.find()
@@ -20,9 +18,7 @@ router.get("/products", async (req, res) => {
   }
 });
 
-/**
- * PLACE ORDER
- */
+
 router.post("/orders", protect(["buyer"]), async (req, res) => {
   try {
     const { productId, quantity } = req.body;
@@ -51,8 +47,7 @@ router.post("/orders", protect(["buyer"]), async (req, res) => {
       quantity,
       totalPrice: product.price * quantity
     });
-
-    // reduce product quantity after order
+    
     product.quantity -= quantity;
     await product.save();
 
@@ -67,9 +62,7 @@ router.post("/orders", protect(["buyer"]), async (req, res) => {
   }
 });
 
-/**
- * GET buyer orders
- */
+
 router.get("/orders", protect(["buyer"]), async (req, res) => {
   try {
     const orders = await Order.find({ buyer: req.user._id })
@@ -84,3 +77,4 @@ router.get("/orders", protect(["buyer"]), async (req, res) => {
 });
 
 module.exports = router;
+
