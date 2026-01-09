@@ -1,9 +1,5 @@
 const api = "http://localhost:5000/api/products";
-const farmerId = 1; // TODO: replace with logged-in farmer ID from token
-
-// =======================
-// ADD PRODUCT
-// =======================
+const farmerId = 1; 
 async function addProduct() {
     const data = {
         FarmerID: farmerId,
@@ -41,9 +37,7 @@ async function addProduct() {
     }
 }
 
-// =======================
-// LOAD FARMER PRODUCTS
-// =======================
+
 async function loadProducts() {
     try {
         const res = await fetch(api);
@@ -70,9 +64,7 @@ async function loadProducts() {
     }
 }
 
-// =======================
-// DELETE PRODUCT
-// =======================
+
 async function deleteProduct(productId) {
     if (!confirm("Are you sure you want to delete this product?")) return;
 
@@ -89,7 +81,6 @@ async function deleteProduct(productId) {
     }
 }
 
-// =======================
-// INITIAL LOAD
-// =======================
+
 loadProducts();
+
