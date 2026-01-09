@@ -1,24 +1,17 @@
 const router = require("express").Router();
 const Product = require("../models/Product");
 
-/**
- * GET ALL PRODUCTS (Buyer + Public)
- * Supports filtering by category and product name
- * Example:
- * /api/products?category=Vegetable&name=Tomato
- */
+
 router.get("/", async (req, res) => {
   try {
     const { category, name } = req.query;
 
     let filter = {};
 
-    // Filter by category
     if (category) {
       filter.category = category;
     }
 
-    // Filter by product name (case-insensitive)
     if (name) {
       filter.name = { $regex: name, $options: "i" };
     }
@@ -30,10 +23,7 @@ router.get("/", async (req, res) => {
   }
 });
 
-/**
- * CREATE PRODUCT (Farmer)
- * POST /api/products/add
- */
+
 router.post("/add", async (req, res) => {
   try {
     const product = await Product.create({
@@ -55,9 +45,7 @@ router.post("/add", async (req, res) => {
   }
 });
 
-/**
- * DELETE PRODUCT (Farmer)
- */
+
 router.delete("/:id", async (req, res) => {
   try {
     const product = await Product.findByIdAndDelete(req.params.id);
@@ -74,9 +62,6 @@ router.delete("/:id", async (req, res) => {
   }
 });
 
-/**
- * UPDATE PRODUCT (Farmer)
- */
 router.put("/:id", async (req, res) => {
   try {
     const updatedProduct = await Product.findByIdAndUpdate(
@@ -106,3 +91,4 @@ router.put("/:id", async (req, res) => {
 });
 
 module.exports = router;
+
