@@ -3,19 +3,15 @@ const User = require("../models/User");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
-/**
- * REGISTER
- */
+
 router.post("/register", async (req, res) => {
   try {
-    // Frontend sends capitalized keys
     const { FullName, Email, Password, Role, Phone, District } = req.body;
 
     if (!FullName || !Email || !Password || !Role || !Phone || !District) {
       return res.status(400).json({ message: "All required fields missing" });
     }
 
-    // IMPORTANT: map Email -> email
     const existingUser = await User.findOne({ email: Email });
     if (existingUser) {
       return res.status(400).json({ message: "Email already registered" });
@@ -27,7 +23,7 @@ router.post("/register", async (req, res) => {
       name: FullName,
       email: Email,
       password: hashedPassword,
-      role: Role.toLowerCase(), // farmer / buyer / admin
+      role: Role.toLowerCase(), 
       phone: Phone,
       district: District
     });
@@ -41,9 +37,7 @@ router.post("/register", async (req, res) => {
   }
 });
 
-/**
- * LOGIN
- */
+
 router.post("/login", async (req, res) => {
   try {
     const { Email, Password } = req.body;
@@ -88,3 +82,4 @@ router.post("/login", async (req, res) => {
 });
 
 module.exports = router;
+
