@@ -29,7 +29,6 @@ const OrderSchema = new mongoose.Schema(
     status: {
       type: String,
 
-      // ✅ FIX: support existing + future statuses
       enum: [
         "pending",
         "Pending",
@@ -46,3 +45,4 @@ const OrderSchema = new mongoose.Schema(
 );
 
 module.exports = mongoose.model("Order", OrderSchema);
+
