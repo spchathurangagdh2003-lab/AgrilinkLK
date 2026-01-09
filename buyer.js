@@ -1,33 +1,26 @@
-// =====================
 // Buyer Dashboard JS
-// =====================
 
 const token = localStorage.getItem("token");
 const role = localStorage.getItem("role");
 
-// Redirect if not logged in
 if (!token) {
     alert("Please login first.");
     window.location.href = "login.html";
 }
 
-// Check if user is buyer
 if (role !== "buyer") {
     alert("Access denied. Only buyers can access this page.");
     window.location.href = "login.html";
 }
 
-// --- ELEMENTS ---
 const productsDiv = document.getElementById("products");
 const categorySelect = document.getElementById("categoryFilter");
 const filterBtn = document.getElementById("filterBtn");
 const ordersDiv = document.getElementById("orders");
 
-// --- API BASE ---
 const API_PRODUCTS = "http://localhost:5000/api/products";
 const API_ORDERS = "http://localhost:5000/api/orders";
 
-// --- LOAD PRODUCTS ---
 async function fetchProducts() {
     try {
         let url = API_PRODUCTS;
@@ -49,7 +42,6 @@ async function fetchProducts() {
     }
 }
 
-// --- DISPLAY PRODUCTS ---
 function displayProducts(products) {
     if (!products.length) {
         productsDiv.innerHTML = "<p>No products found</p>";
@@ -70,10 +62,8 @@ function displayProducts(products) {
     `).join("");
 }
 
-// --- FILTER BUTTON ---
 filterBtn.addEventListener("click", fetchProducts);
 
-// --- PLACE ORDER ---
 async function placeOrder(productId) {
     if (role !== "buyer") {
         alert("Only buyers can place orders.");
@@ -113,7 +103,7 @@ async function placeOrder(productId) {
     }
 }
 
-// --- LOAD ORDERS ---
+
 async function loadOrders() {
     try {
         const res = await fetch(`${API_ORDERS}/my`, {
@@ -131,7 +121,6 @@ async function loadOrders() {
     }
 }
 
-// --- DISPLAY ORDERS ---
 function displayOrders(orders) {
     if (!orders || orders.length === 0) {
         ordersDiv.innerHTML = "<p>No orders found</p>";
@@ -152,7 +141,6 @@ function displayOrders(orders) {
     `).join("");
 }
 
-// --- CANCEL ORDER ---
 async function cancelOrder(orderId) {
     if (!confirm("Are you sure you want to cancel this order?")) return;
 
@@ -179,3 +167,4 @@ async function cancelOrder(orderId) {
 // --- INITIAL LOAD ---
 fetchProducts();
 loadOrders();
+
