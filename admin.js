@@ -1,16 +1,12 @@
-// =====================
 // Admin Dashboard JS
-// =====================
 
 const token = localStorage.getItem("token");
 
-// Redirect if not logged in
 if (!token) {
     alert("Session expired. Please login.");
     window.location.href = "login.html";
 }
 
-// --- ELEMENTS ---
 const btnFarmers = document.getElementById("btnFarmers");
 const btnBuyers = document.getElementById("btnBuyers");
 const btnOrders = document.getElementById("btnOrders");
@@ -19,18 +15,15 @@ const farmersDiv = document.getElementById("farmers");
 const buyersDiv = document.getElementById("buyers");
 const ordersDiv = document.getElementById("orders");
 
-// --- API ENDPOINTS ---
 const FARMERS_API = "http://localhost:5000/api/admin/farmers";
 const BUYERS_API = "http://localhost:5000/api/admin/buyers";
 const ORDERS_API = "http://localhost:5000/api/admin/orders";
 
-// --- LOGOUT ---
 document.getElementById("logoutBtn").addEventListener("click", () => {
     localStorage.removeItem("token");
     window.location.href = "login.html";
 });
 
-// --- FETCH FARMERS ---
 async function fetchFarmers() {
     try {
         const res = await fetch(FARMERS_API, {
@@ -52,7 +45,6 @@ async function fetchFarmers() {
     }
 }
 
-// --- FETCH BUYERS ---
 async function fetchBuyers() {
     try {
         const res = await fetch(BUYERS_API, {
@@ -74,7 +66,6 @@ async function fetchBuyers() {
     }
 }
 
-// --- FETCH ORDERS ---
 async function fetchOrders() {
     try {
         const res = await fetch(ORDERS_API, {
@@ -96,7 +87,6 @@ async function fetchOrders() {
     }
 }
 
-// --- DISPLAY USERS (farmers/buyers) ---
 function displayUsers(container, users) {
     if (!users || users.length === 0) {
         container.innerHTML = "<p>No users found.</p>";
@@ -115,7 +105,6 @@ function displayUsers(container, users) {
     `).join("");
 }
 
-// --- DISPLAY ORDERS ---
 function displayOrders(orders) {
     if (!orders || orders.length === 0) {
         ordersDiv.innerHTML = "<p>No orders found</p>";
@@ -137,13 +126,12 @@ function displayOrders(orders) {
     `).join("");
 }
 
-// --- BUTTON EVENTS ---
 btnFarmers.addEventListener("click", fetchFarmers);
 btnBuyers.addEventListener("click", fetchBuyers);
 btnOrders.addEventListener("click", fetchOrders);
 
-// --- LOGOUT HELPER ---
 function logout() {
     localStorage.removeItem("token");
     window.location.href = "login.html";
 }
+
