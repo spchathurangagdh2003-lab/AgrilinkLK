@@ -10,7 +10,6 @@ exports.protect = (roles = []) => {
         return res.status(401).json({ message: "No token provided" });
       }
 
-      // Support both "Bearer token" and "token"
       if (token.startsWith("Bearer ")) {
         token = token.split(" ")[1];
       }
@@ -33,3 +32,4 @@ exports.protect = (roles = []) => {
     }
   };
 };
+
